@@ -3,10 +3,10 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 
 const app = express();
-const httpServer = createServer(app); // Pass the express app to the createServer function
+const httpServer = createServer(app); 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:5173", // Assuming your React app is running on this port
+    origin: "http://localhost:5173", 
     methods: ["GET", "POST"]
   }
 });
@@ -16,7 +16,7 @@ io.on("connection", (socket) => {
 
   socket.on("message", (message) => {
     console.log("Received message:", message);
-    io.emit("message", message); // Broadcast the message to all connected clients
+    io.emit("message", message); 
   });
 
   socket.on("disconnect", () => {
